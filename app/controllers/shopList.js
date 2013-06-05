@@ -1,4 +1,4 @@
-var punti = require('getElenco');
+var content = require('getElenco');
 
 function openPage(e) {
 	var tabViewPage = Alloy.createController('page', {

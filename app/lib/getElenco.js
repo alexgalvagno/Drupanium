@@ -2,7 +2,7 @@ Ti.include('/lib/config.js');
 
 exports.loadElenco = function(o) {
 	var xhr = Titanium.Network.createHTTPClient();	
-	xhr.open("GEST", REST_PATH + "views/content.json");
+	xhr.open("GET", REST_PATH + "views/content.json");
 	
 	var data = [];
 	

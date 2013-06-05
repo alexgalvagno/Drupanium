@@ -8,11 +8,15 @@ function login() {
   		if(xhr.status === 200){
 	    	var response = JSON.parse(xhr.responseText);
 	    	Alloy.Globals.userData = {
-	    		"userName": data.user.name,
-	    		"userUid": data.user.uid,
-				"userSessionId": data.sessid,
-				"userSessionName": data.sesion_name
+	    		"userName": response.user.name,
+	    		"userUid": response.user.uid,
+				"userSessionId": response.sessid,
+				"userSessionName": response.sesion_name
 	    	}
+	    	
+	    	var shopListPage = Alloy.createController('shopList', {});
+
+			shopListPage.getView().open();
   		}else{
 			var dialog = Ti.UI.createAlertDialog({
 			    message: 'Problemi di connessione!' + xhr.status,

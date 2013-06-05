@@ -7,7 +7,14 @@ function Controller() {
         xhr.onload = function() {
             if (200 === xhr.status) {
                 var response = JSON.parse(xhr.responseText);
-                alert(response.user.name + " - " + response.user.uid);
+                Alloy.Globals.userData = {
+                    userName: response.user.name,
+                    userUid: response.user.uid,
+                    userSessionId: response.sessid,
+                    userSessionName: response.sesion_name
+                };
+                var shopListPage = Alloy.createController("shopList", {});
+                shopListPage.getView().open();
             } else {
                 var dialog = Ti.UI.createAlertDialog({
                     message: "Problemi di connessione!" + xhr.status,
