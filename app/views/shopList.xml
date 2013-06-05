@@ -1,6 +1,5 @@
 <Alloy>
-    <Window id="sperlonga" title="SPERLONGA">
-    	<ImageView image="/images/loghi.png" />
+    <Window id="shopList" title="SHOP LIST">
 		<ActivityIndicator id="activityIndicator" message="Loading ..."/>
 	    <TableView id="table" onClick="openPage">
 		</TableView>

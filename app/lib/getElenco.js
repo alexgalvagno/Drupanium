@@ -1,10 +1,8 @@
-exports.loadElenco = function(o, url, id) {
+Ti.include('/lib/config.js');
+
+exports.loadElenco = function(o) {
 	var xhr = Titanium.Network.createHTTPClient();	
-	xhr.open("POST", url);
-	
-	var params = {
-		atId: id 
-	}
+	xhr.open("GEST", REST_PATH + "views/content.json");
 	
 	var data = [];
 	
@@ -16,17 +14,14 @@ exports.loadElenco = function(o, url, id) {
 			for (var i = 0, j = attivita.length; i < j; i++)
 			{
 				data.push({
-					id: attivita[i].id,
-					title: attivita[i].title,
-					rate: attivita[i].rate,
-					plus: attivita[i].plus
+					id: attivita[i].vid,
+					title: attivita[i].title
 				});
 			}
 		}else{
 			data.push({
 				id: 0,
-				title: 'Nessun elemento presente',
-				rate: null
+				title: 'Nessun elemento presente'
 			});
         }
 		if (o.success) { o.success(data); }
@@ -46,5 +41,5 @@ exports.loadElenco = function(o, url, id) {
 	
 	if (o.start) { o.start(); }
 	
-	xhr.send(params);	
+	xhr.send();	
 };

@@ -1,5 +1,5 @@
 <Alloy>
-	<TableViewRow class="row">
+	<TableViewRow class="row" hasChild="true">
 		<View layout="horizontal">
 			<Label id="title"/>
 			<View id="rate">

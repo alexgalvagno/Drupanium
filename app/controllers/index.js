@@ -7,7 +7,12 @@ function login() {
   	xhr.onload = function() {
   		if(xhr.status === 200){
 	    	var response = JSON.parse(xhr.responseText);
-	    	alert(response.user.name + ' - ' + response.user.uid);
+	    	Alloy.Globals.userData = {
+	    		"userName": data.user.name,
+	    		"userUid": data.user.uid,
+				"userSessionId": data.sessid,
+				"userSessionName": data.sesion_name
+	    	}
   		}else{
 			var dialog = Ti.UI.createAlertDialog({
 			    message: 'Problemi di connessione!' + xhr.status,

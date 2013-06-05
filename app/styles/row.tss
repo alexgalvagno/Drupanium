@@ -24,13 +24,3 @@
         fontSize: '14dp'
     }
 }
-
-"#rate": {
-	height: Titanium.UI.FILL,
-	right: 0,
-	layout:"horizontal"
-}
-
-"#rate[platform=ios]": {
-	top: 15
-}
