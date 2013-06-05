@@ -5,6 +5,5 @@
  */
 
 // Set this to the base path of your rest server (add trailing slash)
-var REST_PATH = 'http://drupanium.a2plab.com/api/rest/';
-var IMG_PATH = 'http://drupanium.a2plab.com/sites/default/files/styles/large/public/field/image/';
+var REST_PATH = 'http://api.drupanium.org/api/rest/';
 var SITE_PATH = 'http://api.drupanium.org/';

@@ -3,7 +3,6 @@ Ti.include('/lib/config.js');
 var isAndroid = (Ti.Platform.osname === "android") ? true : false;
 var args = arguments[0] || {};
 
-
 $.pagina.addEventListener('android:back',function(){    
     $.pagina.close();
     $.image.image = null;		
@@ -18,7 +17,7 @@ xhr.onload = function() {
 	if(xhr.status == 200 ) { 
 		var content = eval('('+this.responseText+')');
 		
-		$.image.image = IMG_PATH + content.field_image.und[0].filename; 
+		//$.image.image = IMG_PATH + content.field_image.und[0].filename; 
 		$.testo.text = content.body.und[0].value;
 	}else{
 		var dialog = Ti.UI.createAlertDialog({
