@@ -11,11 +11,11 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId3 = Ti.UI.createView({
+    $.__views.__alloyId2 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId3"
+        id: "__alloyId2"
     });
-    $.__views.row.add($.__views.__alloyId3);
+    $.__views.row.add($.__views.__alloyId2);
     $.__views.title = Ti.UI.createLabel({
         height: Titanium.UI.FILL,
         font: {
@@ -28,11 +28,11 @@ function Controller() {
         touchEnabled: false,
         id: "title"
     });
-    $.__views.__alloyId3.add($.__views.title);
+    $.__views.__alloyId2.add($.__views.title);
     $.__views.rate = Ti.UI.createView({
         id: "rate"
     });
-    $.__views.__alloyId3.add($.__views.rate);
+    $.__views.__alloyId2.add($.__views.rate);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

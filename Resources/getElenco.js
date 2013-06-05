@@ -9,7 +9,6 @@ exports.loadElenco = function(o) {
     xhr.onload = function(e) {
         if (200 === xhr.status) {
             var attivita = eval("(" + this.responseText + ")");
-            alert(attivita.length);
             if (null != attivita && 0 != attivita.title) for (var i = 0, j = attivita.length; j > i; i++) data.push({
                 id: attivita[i].vid,
                 title: attivita[i].title
