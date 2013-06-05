@@ -29,6 +29,7 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.shopList = Ti.UI.createWindow({
+        backgroundColor: "#ffffff",
         navBarHidden: true,
         id: "shopList",
         title: "SHOP LIST"

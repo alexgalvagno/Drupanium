@@ -1,29 +1,39 @@
 Ti.include('/lib/config.js');
 
 exports.loadElenco = function(o) {
-	var xhr = Titanium.Network.createHTTPClient();	
+	var xhr = Titanium.Network.createHTTPClient({timeout: 60000});	
 	xhr.open("GET", REST_PATH + "views/content.json");
 	
 	var data = [];
 	
-	xhr.onload = function(e) {	
-		var attivita = eval('('+this.responseText+')');
-		
-		if (attivita != null && attivita.title != 0)  { 
-			
-			for (var i = 0, j = attivita.length; i < j; i++)
-			{
+	xhr.onload = function(e) {
+		if(xhr.status === 200){	
+			var attivita = eval('('+this.responseText+')');
+			if (attivita != null && attivita.title != 0)  { 
+				
+				for (var i = 0, j = attivita.length; i < j; i++)
+				{
+					data.push({
+						id: attivita[i].vid,
+						title: attivita[i].title
+					});
+				}
+			}else{
 				data.push({
-					id: attivita[i].vid,
-					title: attivita[i].title
+					id: 0,
+					title: 'Nessun elemento presente'
 				});
-			}
-		}else{
-			data.push({
-				id: 0,
-				title: 'Nessun elemento presente'
+	        }
+	   	}else{
+			var dialog = Ti.UI.createAlertDialog({
+			    message: 'Problemi di connessione!' + xhr.status,
+	   			ok: 'OK',
+	   			title: 'Error'
 			});
-        }
+					
+			dialog.show();
+		}
+		
 		if (o.success) { o.success(data); }
 	};
 	

@@ -5,7 +5,6 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.row = Ti.UI.createTableViewRow({
-        backgroundImage: "/images/bg_row.png",
         height: "50dp",
         className: "itemRow",
         hasChild: "true",
