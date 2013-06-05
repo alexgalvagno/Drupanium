@@ -2,7 +2,7 @@ function Controller() {
     function login() {
         var url = REST_PATH + "user/login/";
         var xhr = Ti.Network.createHTTPClient({
-            timeout: 5e3
+            timeout: 6e4
         });
         xhr.onload = function() {
             if (200 === xhr.status) {
@@ -36,7 +36,7 @@ function Controller() {
     function logout() {
         var url = REST_PATH + "user/logout/";
         var xhr = Ti.Network.createHTTPClient({
-            timeout: 5e3
+            timeout: 6e4
         });
         xhr.onload = function() {
             Ti.API.info("Status: " + xhr.status);

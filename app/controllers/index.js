@@ -2,7 +2,7 @@ Ti.include('/lib/config.js');
 
 function login() {
 	var url = REST_PATH + "user/login/";
-  	var xhr = Ti.Network.createHTTPClient({timeout: 5000});
+  	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
   
   	xhr.onload = function() {
   		if(xhr.status === 200){
@@ -41,7 +41,7 @@ function login() {
 
 function logout() {
 	var url = REST_PATH + "user/logout/";
-	var xhr = Ti.Network.createHTTPClient({timeout: 5000});
+	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
 
 	xhr.onload = function() {
 		Ti.API.info("Status: " + xhr.status);
