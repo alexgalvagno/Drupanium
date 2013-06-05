@@ -1,0 +1,36 @@
+"Window": {
+	backgroundColor:'#ffffff',
+	top:"0dp",
+    left:"0dp",
+    layout:"vertical",
+    zIndex:0
+},
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font: {
+		fontSize: 20,
+		fontFamily: 'Helvetica Neue'
+	},
+	left: '10dp'
+}
+
+"TextField": {
+	left: '10dp',
+	right: '10dp',
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+}
+
+"#login": {
+	top: '20dp',
+	width: '48%',
+	height: '50dp',
+	right: '10dp'
+}
+
+"#logout": {
+	top: '20dp',
+	width: '48%',
+	height: '50dp'
+} 

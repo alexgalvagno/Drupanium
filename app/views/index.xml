@@ -1,0 +1,12 @@
+<Alloy>
+	<Window class="container">
+		<Label id="userLb">Username:</Label>
+		<TextField id="user"></TextField>
+		<Label id="passLb">Password:</Label>
+		<TextField id="pass"></TextField>
+		<View layout="horizontal">
+			<Button id="login" title="Login" onClick="login"></Button>
+			<Button id="logout" title="Logout" onClick="logout"></Button>
+		</View>
+	</Window>
+</Alloy>
