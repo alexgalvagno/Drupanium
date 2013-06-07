@@ -9,15 +9,15 @@ $.pagina.addEventListener('android:back',function(){
 });
 
 var xhr = Titanium.Network.createHTTPClient();	
-xhr.open("GET", "node/" + args.id + ".json");
+xhr.open("GET", REST_PATH + 'node/' + args.id + ".json");
 	
 xhr.onload = function() {	
 	$.activityIndicator.show();
 		
 	if(xhr.status == 200 ) { 
 		var content = eval('('+this.responseText+')');
-		
-		//$.image.image = IMG_PATH + content.field_image.und[0].filename; 
+		alert(content.field_image);
+		if(content.field_image != null) $.image.image = IMG_PATH + content.field_image.und[0].filename; 
 		$.testo.text = content.body.und[0].value;
 	}else{
 		var dialog = Ti.UI.createAlertDialog({
@@ -35,7 +35,7 @@ xhr.onload = function() {
 	
 xhr.onerror = function(e) {
 	var dialog = Ti.UI.createAlertDialog({
-		message: 'Problemi di connessione!',
+		message: 'Problemi di connessione!' + e.error,
    		ok: 'OK',
    		title: 'Error'
 	});

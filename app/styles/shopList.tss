@@ -1,7 +1,3 @@
 "Window[platform=android]": {
     navBarHidden: true
 }
-
-"Window": {
-	backgroundColor: "#ffffff"
-}

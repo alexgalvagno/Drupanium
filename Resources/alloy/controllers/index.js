@@ -5,6 +5,9 @@ function Controller() {
             timeout: 6e4
         });
         xhr.onload = function() {
+            style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+            $.activityIndicator.style = style;
+            $.activityIndicator.show();
             if (200 === xhr.status) {
                 var response = JSON.parse(xhr.responseText);
                 Alloy.Globals.userData = {
@@ -23,6 +26,7 @@ function Controller() {
                 });
                 dialog.show();
             }
+            $.activityIndicator.hide();
         };
         userData = {
             username: $.user.value,
@@ -74,6 +78,7 @@ function Controller() {
         left: "0dp",
         layout: "vertical",
         zIndex: 0,
+        orientationModes: [ Ti.UI.PORTRAIT ],
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -117,6 +122,7 @@ function Controller() {
     $.__views.index.add($.__views.pass);
     $.__views.__alloyId1 = Ti.UI.createView({
         layout: "horizontal",
+        height: Ti.UI.Size,
         id: "__alloyId1"
     });
     $.__views.index.add($.__views.__alloyId1);
@@ -139,6 +145,11 @@ function Controller() {
     });
     $.__views.__alloyId1.add($.__views.logout);
     logout ? $.__views.logout.addEventListener("click", logout) : __defers["$.__views.logout!click!logout"] = true;
+    $.__views.activityIndicator = Ti.UI.createActivityIndicator({
+        id: "activityIndicator",
+        message: "Please Wait...Loging"
+    });
+    $.__views.index.add($.__views.activityIndicator);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.include("/lib/config.js");

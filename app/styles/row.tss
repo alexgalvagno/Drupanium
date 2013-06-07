@@ -20,3 +20,9 @@
         fontSize: '14dp'
     }
 }
+
+"#image": {
+	defaultImage: '/images/wait.png',
+	height: Titanium.UI.SIZE,
+	top: 0
+}

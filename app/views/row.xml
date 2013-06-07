@@ -1,9 +1,8 @@
 <Alloy>
 	<TableViewRow class="row" hasChild="true">
-		<View layout="horizontal">
+		<View layout="verical">
 			<Label id="title"/>
-			<View id="rate">
-			</View>
+			<ImageView id="image"></ImageView>
 		</View>
 	</TableViewRow>
 </Alloy>

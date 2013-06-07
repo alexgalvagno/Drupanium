@@ -1,11 +1,3 @@
-"Window": {
-	backgroundColor:'#ffffff',
-	top:"0dp",
-    left:"0dp",
-    layout:"vertical",
-    zIndex:0
-},
-
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,

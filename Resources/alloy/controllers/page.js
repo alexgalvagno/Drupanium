@@ -10,9 +10,14 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.pagina = Ti.UI.createWindow({
+        backgroundColor: "#ffffff",
+        top: "0dp",
+        left: "0dp",
+        layout: "vertical",
+        zIndex: 0,
+        orientationModes: [ Ti.UI.PORTRAIT ],
         navBarHidden: true,
-        id: "pagina",
-        layout: "vertical"
+        id: "pagina"
     });
     $.__views.pagina && $.addTopLevelView($.__views.pagina);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
@@ -68,11 +73,13 @@ function Controller() {
         $.image.image = null;
     });
     var xhr = Titanium.Network.createHTTPClient();
-    xhr.open("GET", "node/" + args.id + ".json");
+    xhr.open("GET", REST_PATH + "node/" + args.id + ".json");
     xhr.onload = function() {
         $.activityIndicator.show();
         if (200 == xhr.status) {
             var content = eval("(" + this.responseText + ")");
+            alert(content.field_image);
+            null != content.field_image && ($.image.image = IMG_PATH + content.field_image.und[0].filename);
             $.testo.text = content.body.und[0].value;
         } else {
             var dialog = Ti.UI.createAlertDialog({
@@ -85,9 +92,9 @@ function Controller() {
         $.activityIndicator.hide();
         $.pagina.remove($.activityIndicator);
     };
-    xhr.onerror = function() {
+    xhr.onerror = function(e) {
         var dialog = Ti.UI.createAlertDialog({
-            message: "Problemi di connessione!",
+            message: "Problemi di connessione!" + e.error,
             ok: "OK",
             title: "Error"
         });

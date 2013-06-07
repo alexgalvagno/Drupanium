@@ -5,6 +5,16 @@ function login() {
   	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
   
   	xhr.onload = function() {
+  		if (Ti.Platform.name === 'iPhone OS'){
+		  	style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
+		}
+		else {
+		  	style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+		}
+		
+  		$.activityIndicator.style = style;
+  		$.activityIndicator.show();
+	
   		if(xhr.status === 200){
 	    	var response = JSON.parse(xhr.responseText);
 	    	Alloy.Globals.userData = {
@@ -26,6 +36,8 @@ function login() {
 					
 			dialog.show();
 		}
+		
+		$.activityIndicator.hide();
   	}
   
   	userData = {

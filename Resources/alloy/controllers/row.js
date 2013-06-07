@@ -12,7 +12,7 @@ function Controller() {
     });
     $.__views.row && $.addTopLevelView($.__views.row);
     $.__views.__alloyId2 = Ti.UI.createView({
-        layout: "horizontal",
+        layout: "verical",
         id: "__alloyId2"
     });
     $.__views.row.add($.__views.__alloyId2);
@@ -29,15 +29,19 @@ function Controller() {
         id: "title"
     });
     $.__views.__alloyId2.add($.__views.title);
-    $.__views.rate = Ti.UI.createView({
-        id: "rate"
+    $.__views.image = Ti.UI.createImageView({
+        defaultImage: "/images/wait.png",
+        height: Titanium.UI.SIZE,
+        top: 0,
+        id: "image"
     });
-    $.__views.__alloyId2.add($.__views.rate);
+    $.__views.__alloyId2.add($.__views.image);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.row.id = args.id;
     $.row.title = args.title;
+    null != content.field_image && ($.image.image = IMG_PATH + content.field_image.und[0].filename);
     $.title.text = args.title;
     _.extend($, exports);
 }

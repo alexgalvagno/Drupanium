@@ -30,6 +30,11 @@ function Controller() {
     var __defers = {};
     $.__views.shopList = Ti.UI.createWindow({
         backgroundColor: "#ffffff",
+        top: "0dp",
+        left: "0dp",
+        layout: "vertical",
+        zIndex: 0,
+        orientationModes: [ Ti.UI.PORTRAIT ],
         navBarHidden: true,
         id: "shopList",
         title: "SHOP LIST"
