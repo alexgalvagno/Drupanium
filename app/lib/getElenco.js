@@ -16,7 +16,6 @@ exports.loadElenco = function(o) {
 					var image = null;
 					
 					if(attivita[i].field_image.length != 0){
-						alert(attivita[i].field_image.und[0].filename);
 						var image = IMG_PATH + attivita[i].field_image.und[0].filename;	
 					} 
 					
