@@ -1,6 +1,5 @@
 "#row": {
-	height: '50dp',
-    className: 'itemRow'
+	height: Ti.UI.SIZE
 }
 
 "#title": {
@@ -11,7 +10,7 @@
     },
     color:'#000000',
     left: '10dp',
-    top:'0',
+    top:'5dp',
     touchEnabled: false
 }
 
@@ -24,5 +23,5 @@
 "#image": {
 	defaultImage: '/images/wait.png',
 	height: Titanium.UI.SIZE,
-	top: 0
+	top: '25dp'
 }

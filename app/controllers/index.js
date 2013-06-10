@@ -3,18 +3,18 @@ Ti.include('/lib/config.js');
 function login() {
 	var url = REST_PATH + "user/login/";
   	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
+  	
+  	if (Ti.Platform.name === 'iPhone OS'){
+		style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
+	}
+	else {
+		style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+	}
+		
+  	$.activityIndicator.style = style;
+  	$.activityIndicator.show();
   
   	xhr.onload = function() {
-  		if (Ti.Platform.name === 'iPhone OS'){
-		  	style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
-		}
-		else {
-		  	style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
-		}
-		
-  		$.activityIndicator.style = style;
-  		$.activityIndicator.show();
-	
   		if(xhr.status === 200){
 	    	var response = JSON.parse(xhr.responseText);
 	    	Alloy.Globals.userData = {

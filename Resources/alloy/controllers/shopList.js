@@ -13,7 +13,8 @@ function Controller() {
                 _.each(data, function(item) {
                     rows.push(Alloy.createController("row", {
                         id: item.id,
-                        title: item.title
+                        title: item.title,
+                        img: item.img
                     }).getView());
                 });
                 $.table.setData(rows);

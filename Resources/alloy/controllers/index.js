@@ -4,10 +4,10 @@ function Controller() {
         var xhr = Ti.Network.createHTTPClient({
             timeout: 6e4
         });
+        style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+        $.activityIndicator.style = style;
+        $.activityIndicator.show();
         xhr.onload = function() {
-            style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
-            $.activityIndicator.style = style;
-            $.activityIndicator.show();
             if (200 === xhr.status) {
                 var response = JSON.parse(xhr.responseText);
                 Alloy.Globals.userData = {
@@ -122,7 +122,7 @@ function Controller() {
     $.__views.index.add($.__views.pass);
     $.__views.__alloyId1 = Ti.UI.createView({
         layout: "horizontal",
-        height: Ti.UI.Size,
+        height: Ti.UI.SIZE,
         id: "__alloyId1"
     });
     $.__views.index.add($.__views.__alloyId1);

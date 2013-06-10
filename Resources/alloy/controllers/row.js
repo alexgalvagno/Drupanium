@@ -5,8 +5,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.row = Ti.UI.createTableViewRow({
-        height: "50dp",
-        className: "itemRow",
+        height: Ti.UI.SIZE,
         hasChild: "true",
         id: "row"
     });
@@ -24,7 +23,7 @@ function Controller() {
         },
         color: "#000000",
         left: "10dp",
-        top: "0",
+        top: "5dp",
         touchEnabled: false,
         id: "title"
     });
@@ -32,7 +31,7 @@ function Controller() {
     $.__views.image = Ti.UI.createImageView({
         defaultImage: "/images/wait.png",
         height: Titanium.UI.SIZE,
-        top: 0,
+        top: "25dp",
         id: "image"
     });
     $.__views.__alloyId2.add($.__views.image);
@@ -41,7 +40,7 @@ function Controller() {
     var args = arguments[0] || {};
     $.row.id = args.id;
     $.row.title = args.title;
-    null != content.field_image && ($.image.image = IMG_PATH + content.field_image.und[0].filename);
+    null != args.img && ($.image.image = args.img);
     $.title.text = args.title;
     _.extend($, exports);
 }

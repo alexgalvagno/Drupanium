@@ -9,10 +9,18 @@ exports.loadElenco = function(o) {
     xhr.onload = function(e) {
         if (200 === xhr.status) {
             var attivita = eval("(" + this.responseText + ")");
-            if (null != attivita && 0 != attivita.title) for (var i = 0, j = attivita.length; j > i; i++) data.push({
-                id: attivita[i].vid,
-                title: attivita[i].title
-            }); else data.push({
+            if (null != attivita && 0 != attivita.title) for (var i = 0, j = attivita.length; j > i; i++) {
+                var image = null;
+                if (0 != attivita[i].field_image.length) {
+                    alert(attivita[i].field_image.und[0].filename);
+                    var image = IMG_PATH + attivita[i].field_image.und[0].filename;
+                }
+                data.push({
+                    id: attivita[i].vid,
+                    title: attivita[i].title,
+                    img: image
+                });
+            } else data.push({
                 id: 0,
                 title: "Nessun elemento presente"
             });

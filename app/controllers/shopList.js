@@ -17,6 +17,7 @@ function refreshPunti() {
 				rows.push(Alloy.createController('row', {
 					id: item.id,
 					title: item.title,
+					img: item.img
 				}).getView());
 			});
 			$.table.setData(rows);

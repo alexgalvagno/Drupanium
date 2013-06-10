@@ -13,9 +13,17 @@ exports.loadElenco = function(o) {
 				
 				for (var i = 0, j = attivita.length; i < j; i++)
 				{
+					var image = null;
+					
+					if(attivita[i].field_image.length != 0){
+						alert(attivita[i].field_image.und[0].filename);
+						var image = IMG_PATH + attivita[i].field_image.und[0].filename;	
+					} 
+					
 					data.push({
 						id: attivita[i].vid,
-						title: attivita[i].title
+						title: attivita[i].title,
+						img: image
 					});
 				}
 			}else{
