@@ -10,11 +10,11 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.__alloyId5 = Ti.UI.createView({
         layout: "verical",
-        id: "__alloyId2"
+        id: "__alloyId5"
     });
-    $.__views.row.add($.__views.__alloyId2);
+    $.__views.row.add($.__views.__alloyId5);
     $.__views.title = Ti.UI.createLabel({
         height: Titanium.UI.FILL,
         font: {
@@ -27,14 +27,15 @@ function Controller() {
         touchEnabled: false,
         id: "title"
     });
-    $.__views.__alloyId2.add($.__views.title);
+    $.__views.__alloyId5.add($.__views.title);
     $.__views.image = Ti.UI.createImageView({
         defaultImage: "/images/wait.png",
         height: Titanium.UI.SIZE,
-        top: "25dp",
+        top: "35dp",
+        bottom: "10dp",
         id: "image"
     });
-    $.__views.__alloyId2.add($.__views.image);
+    $.__views.__alloyId5.add($.__views.image);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

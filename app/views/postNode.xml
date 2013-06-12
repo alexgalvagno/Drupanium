@@ -1,0 +1,11 @@
+<Alloy>
+	<Window id="postNode" title="POST NODE">
+   		<View id="view2" backgroundColor="#ffffff" >
+           	<Label id="nodeTitleLb">Title:</Label>
+			<TextField id="nodeTitleTf"></TextField>
+			<Label id="nodeBodyLb">Body:</Label>
+			<TextField id="nodeBodyTa"></TextField>
+			<Button id="saveButton" title="Save" onClick="saveNode"></Button>
+      	</View>
+   	</Window>
+</Alloy>

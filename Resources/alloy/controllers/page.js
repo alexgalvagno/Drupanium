@@ -16,7 +16,6 @@ function Controller() {
         layout: "vertical",
         zIndex: 0,
         orientationModes: [ Ti.UI.PORTRAIT ],
-        navBarHidden: true,
         id: "pagina"
     });
     $.__views.pagina && $.addTopLevelView($.__views.pagina);

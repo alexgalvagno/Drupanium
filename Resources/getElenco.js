@@ -11,10 +11,7 @@ exports.loadElenco = function(o) {
             var attivita = eval("(" + this.responseText + ")");
             if (null != attivita && 0 != attivita.title) for (var i = 0, j = attivita.length; j > i; i++) {
                 var image = null;
-                if (0 != attivita[i].field_image.length) {
-                    alert(attivita[i].field_image.und[0].filename);
-                    var image = IMG_PATH + attivita[i].field_image.und[0].filename;
-                }
+                if (0 != attivita[i].field_image.length) var image = IMG_PATH + attivita[i].field_image.und[0].filename;
                 data.push({
                     id: attivita[i].vid,
                     title: attivita[i].title,

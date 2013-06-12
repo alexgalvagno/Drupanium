@@ -36,20 +36,24 @@ function Controller() {
         layout: "vertical",
         zIndex: 0,
         orientationModes: [ Ti.UI.PORTRAIT ],
-        navBarHidden: true,
         id: "shopList",
         title: "SHOP LIST"
     });
     $.__views.shopList && $.addTopLevelView($.__views.shopList);
+    $.__views.view1 = Ti.UI.createView({
+        id: "view1",
+        backgroundColor: "#ffffff"
+    });
+    $.__views.shopList.add($.__views.view1);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         message: "Loading ..."
     });
-    $.__views.shopList.add($.__views.activityIndicator);
+    $.__views.view1.add($.__views.activityIndicator);
     $.__views.table = Ti.UI.createTableView({
         id: "table"
     });
-    $.__views.shopList.add($.__views.table);
+    $.__views.view1.add($.__views.table);
     openPage ? $.__views.table.addEventListener("click", openPage) : __defers["$.__views.table!click!openPage"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
