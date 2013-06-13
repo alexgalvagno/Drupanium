@@ -19,7 +19,7 @@ function Controller() {
                 });
                 $.table.setData(rows);
                 $.activityIndicator.hide();
-                $.shopList.remove($.activityIndicator);
+                $.view1.remove($.activityIndicator);
             }
         });
     }
@@ -29,22 +29,11 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.shopList = Ti.UI.createWindow({
-        backgroundColor: "#ffffff",
-        top: "0dp",
-        left: "0dp",
-        layout: "vertical",
-        zIndex: 0,
-        orientationModes: [ Ti.UI.PORTRAIT ],
-        id: "shopList",
-        title: "SHOP LIST"
-    });
-    $.__views.shopList && $.addTopLevelView($.__views.shopList);
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         backgroundColor: "#ffffff"
     });
-    $.__views.shopList.add($.__views.view1);
+    $.__views.view1 && $.addTopLevelView($.__views.view1);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         message: "Loading ..."

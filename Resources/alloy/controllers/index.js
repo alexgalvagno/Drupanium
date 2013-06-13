@@ -1,5 +1,6 @@
 function Controller() {
     function login() {
+        Ti.UI.Android.hideSoftKeyboard();
         var url = REST_PATH + "user/login/";
         var xhr = Ti.Network.createHTTPClient({
             timeout: 6e4
@@ -16,7 +17,7 @@ function Controller() {
                     userSessionId: response.sessid,
                     userSessionName: response.sesion_name
                 };
-                var shopListPage = Alloy.createController("shopList", {});
+                var shopListPage = Alloy.createController("main", {});
                 shopListPage.getView().open();
             } else {
                 var dialog = Ti.UI.createAlertDialog({

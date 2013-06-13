@@ -1,9 +1,7 @@
 <Alloy>
-    <Window id="shopList" title="SHOP LIST">
-    	<View id="view1" backgroundColor="#ffffff" >
-			<ActivityIndicator id="activityIndicator" message="Loading ..."/>
-			<TableView id="table" onClick="openPage">
-			</TableView>
-      	</View>
-    </Window>
+    <View id="view1" backgroundColor="#ffffff" >
+		<ActivityIndicator id="activityIndicator" message="Loading ..."/>
+		<TableView id="table" onClick="openPage">
+		</TableView>
+    </View>
 </Alloy>

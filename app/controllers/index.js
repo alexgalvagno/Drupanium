@@ -1,6 +1,8 @@
 Ti.include('/lib/config.js');
 
 function login() {
+	Ti.UI.Android.hideSoftKeyboard();
+	
 	var url = REST_PATH + "user/login/";
   	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
   	
@@ -24,7 +26,7 @@ function login() {
 				"userSessionName": response.sesion_name
 	    	}
 	    	
-	    	var shopListPage = Alloy.createController('shopList', {});
+	    	var shopListPage = Alloy.createController('main', {});
 
 			shopListPage.getView().open();
   		}else{

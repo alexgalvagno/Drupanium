@@ -22,7 +22,7 @@ function refreshPunti() {
 			});
 			$.table.setData(rows);
 			$.activityIndicator.hide();
-			$.shopList.remove($.activityIndicator);
+			$.view1.remove($.activityIndicator);
 		}
 	});
 }

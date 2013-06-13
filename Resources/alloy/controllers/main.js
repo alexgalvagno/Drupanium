@@ -16,13 +16,13 @@ function Controller() {
     });
     $.__views.main && $.addTopLevelView($.__views.main);
     var __alloyId2 = [];
-    $.__views.__alloyId3 = Alloy.createController("postNode", {
+    $.__views.__alloyId3 = Alloy.createController("shopList", {
         id: "__alloyId3"
     });
     __alloyId2.push($.__views.__alloyId3.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId4 = Alloy.createController("shopList", {
+    $.__views.__alloyId4 = Alloy.createController("postNode", {
         id: "__alloyId4"
     });
     __alloyId2.push($.__views.__alloyId4.getViewEx({

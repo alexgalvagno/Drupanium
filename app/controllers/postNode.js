@@ -1,9 +1,4 @@
 Ti.include("/lib/config.js");
-// Include the tiajax.js library
-Ti.include("/lib/tiajax.js");
-
-$ = {};
-$.ajax = Titanium.Network.ajax;
 
 /*var imageButton = Ti.UI.createButton({
 title: "Image",
@@ -38,15 +33,15 @@ error:function(error) {}
 */
 
 function saveNode() {
-	alert(Alloy.Globals.userData.userUid);
+	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
 	// Create a new node object
 	var node = {
 		node:{
-			title: nodeTitleTf.value,
+			title: $.nodeTitleTf.value,
 			type:'article',
 			body: {
 				und: [{ 
-					value: nodeBodyTa.value,
+					value: $.nodeBodyTa.value,
 					format: 'full_html'
 				}]
 			},
@@ -66,17 +61,33 @@ function saveNode() {
 	// Define the url
 	// in this case, we'll connecting to http://example.com/api/rest/node
 	var url = REST_PATH + 'node';
-
-	// Use $.ajax to create the node
-	$.ajax({
-		type: "POST",
-		url: url,
-		data: JSON.stringify(node), // Stringify the node
-		dataType: 'json',
-		contentType: 'application/json',
-		// On success do some processing like closing the window and show an alert
-		success: function(data) {
-			alert("Content created with id " + data.nid);
-		},
-	});
+	
+	xhr.onload = function() {
+  		if(xhr.status === 200){
+	    	var response = JSON.parse(xhr.responseText);
+	    	alert(response.nid);
+  		}else{
+			var dialog = Ti.UI.createAlertDialog({
+			    message: 'Problemi di connessione!' + xhr.status,
+	   			ok: 'OK',
+	   			title: 'Error'
+			});
+					
+			dialog.show();
+		}
+  	}
+  	
+  	xhr.onerror = function(e) {
+		var dialog = Ti.UI.createAlertDialog({
+		    message: 'Problemi di connessione!' + e.error,
+   			ok: 'OK',
+   			title: 'Error'
+		});
+				
+		dialog.show();
+	};
+  
+  	xhr.open("POST", url);
+  	xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+  	xhr.send(JSON.stringify(node));
 }

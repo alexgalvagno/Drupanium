@@ -1,8 +1,8 @@
 <Alloy>
     <Window id="main" title="MAIN">
-    	<ScrollableView id="scrollableView">    		
+    	<ScrollableView id="scrollableView">
+    		<Require src="shopList" type="view"></Require>    		
     		<Require src="postNode" type="view"></Require>
-    		<Require src="shopList" type="view"></Require>
         </ScrollableView>
     </Window>
 </Alloy>
