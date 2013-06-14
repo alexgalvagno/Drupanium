@@ -86,6 +86,18 @@ function Controller() {
     });
     $.__views.view2.add($.__views.nodeBodyLb);
     $.__views.nodeBodyTa = Ti.UI.createTextArea({
+        font: {
+            fontSize: "12dp"
+        },
+        returnKeyType: Ti.UI.RETURNKEY_GO,
+        textAlign: "left",
+        left: "10dp",
+        right: "10dp",
+        height: "100dp",
+        bottom: "10dp",
+        borderWidth: 2,
+        borderColor: "#bbb",
+        borderRadius: 5,
         id: "nodeBodyTa"
     });
     $.__views.view2.add($.__views.nodeBodyTa);

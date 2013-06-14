@@ -3,10 +3,10 @@
     <id>it.wdsolutions.drupanium</id>
     <name>Drupanium</name>
     <version>1.0</version>
-    <publisher>Alessandro</publisher>
+    <publisher>WebDesk Solutions</publisher>
     <url>http://www.wdsolutions.it</url>
     <description>not specified</description>
-    <copyright>2013 by Alessandro</copyright>
+    <copyright>2013 by WebDesk Solutions</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
@@ -41,8 +41,8 @@
     </mobileweb>
     <modules/>
     <deployment-targets>
-        <target device="iphone">false</target>
-        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
         <target device="blackberry">false</target>
         <target device="android">true</target>
         <target device="mobileweb">true</target>

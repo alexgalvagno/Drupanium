@@ -1,9 +1,9 @@
-#appname: Drupanium
-#appid: it.wdsolutions.drupanium
-#type: mobile
-#guid: 187d9f68-6b84-4f17-a396-c095b217444b
-#version: 1.0
-#publisher: not specified
-#url: not specified
-#image: appicon.png
-#desc: not specified
+#appname:Drupanium
+#appid:it.wdsolutions.drupanium
+#type:ipad
+#guid:187d9f68-6b84-4f17-a396-c095b217444b
+#version:1.0
+#publisher:WebDesk Solutions
+#url:http://www.wdsolutions.it
+#image:appicon.png
+#desc:not specified

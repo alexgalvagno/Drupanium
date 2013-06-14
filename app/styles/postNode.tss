@@ -17,3 +17,22 @@
 	right: '10dp',
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 }
+
+"TextArea": {
+	font: {
+		fontSize:'12dp'
+	},
+	returnKeyType: Ti.UI.RETURNKEY_GO,
+	textAlign: 'left',
+	left: '10dp',
+	right: '10dp',
+	height : '100dp',
+	bottom: '10dp'
+}
+
+"TextArea[platform=ios]": {
+	borderWidth: 2,
+	borderColor: '#bbb',
+	borderRadius: 5
+}
+

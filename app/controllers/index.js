@@ -1,7 +1,7 @@
 Ti.include('/lib/config.js');
 
 function login() {
-	Ti.UI.Android.hideSoftKeyboard();
+	hideKeyboard();
 	
 	var url = REST_PATH + "user/login/";
   	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
@@ -86,5 +86,10 @@ function logout() {
 	xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 	xhr.send();
 }	
+
+function hideKeyboard() {
+	$.user.blur();
+	$.pass.blur();
+}
 
 $.index.open();

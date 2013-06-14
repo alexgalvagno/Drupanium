@@ -1,11 +1,11 @@
 function Controller() {
     function login() {
-        Ti.UI.Android.hideSoftKeyboard();
+        hideKeyboard();
         var url = REST_PATH + "user/login/";
         var xhr = Ti.Network.createHTTPClient({
             timeout: 6e4
         });
-        style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
+        style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
         $.activityIndicator.style = style;
         $.activityIndicator.show();
         xhr.onload = function() {
@@ -66,6 +66,10 @@ function Controller() {
         xhr.open("POST", url);
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         xhr.send();
+    }
+    function hideKeyboard() {
+        $.user.blur();
+        $.pass.blur();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
