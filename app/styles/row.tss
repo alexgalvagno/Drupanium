@@ -1,9 +1,10 @@
-"#row": {
-	height: Ti.UI.SIZE
+".row": {
+	height: Ti.UI.SIZE,
+	hasChild: true
 }
 
 "#title": {
-	height: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
     font: {
         fontSize: '16dp',
         fontWeight: 'bold'
@@ -20,7 +21,7 @@
     }
 }
 
-"#image": {
+".image": {
 	defaultImage: '/images/wait.png',
 	height: Titanium.UI.SIZE,
 	top: '35dp',

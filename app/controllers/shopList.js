@@ -4,9 +4,10 @@ function openPage(e) {
 	var tabViewPage = Alloy.createController('page', {
 								id: e.row.id,
 								title: e.row.title
-							});
+							}).getView();
 
-	tabViewPage.getView().open();
+	if(Ti.Platform.osname === 'android') tabViewPage.open();
+	else $.nav.open(tabViewPage, {animated:true});
 }
 
 function refreshPunti() {

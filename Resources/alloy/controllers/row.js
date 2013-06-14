@@ -6,7 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.row = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
-        hasChild: "true",
+        hasChild: true,
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
@@ -16,7 +16,7 @@ function Controller() {
     });
     $.__views.row.add($.__views.__alloyId5);
     $.__views.title = Ti.UI.createLabel({
-        height: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
         font: {
             fontSize: "14dp"
         },

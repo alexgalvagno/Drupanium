@@ -1,7 +1,11 @@
 <Alloy>
-    <View id="view1" backgroundColor="#ffffff" >
-		<ActivityIndicator id="activityIndicator" message="Loading ..."/>
-		<TableView id="table" onClick="openPage">
-		</TableView>
-    </View>
+	<NavigationGroup id="nav" platform="ios">
+    	<Window id="win2" title="SHOP LIST">
+		    <View id="view1" backgroundColor="#ffffff" >
+				<ActivityIndicator id="activityIndicator" message="Loading ..."/>
+				<TableView id="table" onClick="openPage">
+				</TableView>
+		    </View>
+		</Window>
+	</NavigationGroup>
 </Alloy>

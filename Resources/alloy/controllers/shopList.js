@@ -3,8 +3,10 @@ function Controller() {
         var tabViewPage = Alloy.createController("page", {
             id: e.row.id,
             title: e.row.title
+        }).getView();
+        "android" === Ti.Platform.osname ? tabViewPage.open() : $.nav.open(tabViewPage, {
+            animated: true
         });
-        tabViewPage.getView().open();
     }
     function refreshPunti() {
         content.loadElenco({
@@ -29,11 +31,21 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
+    $.__views.win2 = Ti.UI.createWindow({
+        backgroundColor: "#ffffff",
+        top: "0dp",
+        left: "0dp",
+        layout: "vertical",
+        zIndex: 0,
+        orientationModes: [ Ti.UI.PORTRAIT ],
+        id: "win2",
+        title: "SHOP LIST"
+    });
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         backgroundColor: "#ffffff"
     });
-    $.__views.view1 && $.addTopLevelView($.__views.view1);
+    $.__views.win2.add($.__views.view1);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         message: "Loading ..."
@@ -44,6 +56,11 @@ function Controller() {
     });
     $.__views.view1.add($.__views.table);
     openPage ? $.__views.table.addEventListener("click", openPage) : __defers["$.__views.table!click!openPage"] = true;
+    $.__views.nav = Ti.UI.iPhone.createNavigationGroup({
+        window: $.__views.win2,
+        id: "nav"
+    });
+    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var content = require("getElenco");

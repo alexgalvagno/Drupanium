@@ -17,8 +17,8 @@ function Controller() {
                     userSessionId: response.sessid,
                     userSessionName: response.sesion_name
                 };
-                var shopListPage = Alloy.createController("main", {});
-                shopListPage.getView().open();
+                var shopListPage = Alloy.createController("main", {}).getView();
+                shopListPage.open();
             } else {
                 var dialog = Ti.UI.createAlertDialog({
                     message: "Problemi di connessione!" + xhr.status,
