@@ -16,8 +16,8 @@ xhr.onload = function() {
 		
 	if(xhr.status == 200 ) { 
 		var content = eval('('+this.responseText+')');
-		alert(content.field_image);
-		if(content.field_image != null) $.image.image = IMG_PATH + content.field_image.und[0].filename; 
+		
+		if(content.field_image.length != 0) $.image.image = IMG_PATH + content.field_image.und[0].filename; 
 		$.testo.text = content.body.und[0].value;
 	}else{
 		var dialog = Ti.UI.createAlertDialog({

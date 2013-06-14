@@ -8,4 +8,9 @@
 		    </View>
 		</Window>
 	</NavigationGroup>
+	<View id="view1" backgroundColor="#ffffff" platform="android" >
+		<ActivityIndicator id="activityIndicator" message="Loading ..."/>
+		<TableView id="table" onClick="openPage">
+		</TableView>
+	</View>
 </Alloy>

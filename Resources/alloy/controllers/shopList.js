@@ -67,6 +67,7 @@ function Controller() {
     $.activityIndicator.show();
     refreshPunti();
     __defers["$.__views.table!click!openPage"] && $.__views.table.addEventListener("click", openPage);
+    __defers["$.__views.table!click!openPage"] && $.__views.table.addEventListener("click", openPage);
     _.extend($, exports);
 }
 

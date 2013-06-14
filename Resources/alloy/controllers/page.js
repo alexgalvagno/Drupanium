@@ -77,8 +77,7 @@ function Controller() {
         $.activityIndicator.show();
         if (200 == xhr.status) {
             var content = eval("(" + this.responseText + ")");
-            alert(content.field_image);
-            null != content.field_image && ($.image.image = IMG_PATH + content.field_image.und[0].filename);
+            0 != content.field_image.length && ($.image.image = IMG_PATH + content.field_image.und[0].filename);
             $.testo.text = content.body.und[0].value;
         } else {
             var dialog = Ti.UI.createAlertDialog({
