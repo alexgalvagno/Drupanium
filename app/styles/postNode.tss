@@ -36,3 +36,37 @@
 	borderRadius: 5
 }
 
+"#imageView": {
+	layout:'horizontal',
+	height:'130dp',
+	top:'10dp'
+}
+
+"#immagineBtnView": {
+	top:'10dp',
+	layout:'vertical',
+	height:'120dp',
+	width:'50%'
+}
+
+"#cameraBtn": {
+	left: '10dp',
+	title: "Camera",
+	width:'70%'
+}
+
+"#galleryBtn":{
+	top:'5dp',
+	left: '10dp',
+	title: "Gallery",
+	width:'70%'
+}
+
+"#img": {
+	image:'/images/wait.png',
+	width:'126dp',
+	height:'126dp',
+	borderWidth: 2,
+	borderColor: '#bbb',
+	borderRadius: 5
+}

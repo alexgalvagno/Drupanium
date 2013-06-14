@@ -65,7 +65,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.include("/lib/config.js");
-    var isAndroid = "android" === Ti.Platform.osname ? true : false;
+    var isAndroid = true;
     var args = arguments[0] || {};
     $.pagina.addEventListener("android:back", function() {
         $.pagina.close();

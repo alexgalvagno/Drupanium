@@ -4,6 +4,13 @@
 		<TextField id="nodeTitleTf"></TextField>
 		<Label id="nodeBodyLb">Body:</Label>
 		<TextArea id="nodeBodyTa"></TextArea>
+		<View id="imageView">
+			<View id="immagineBtnView">
+				<Button id="cameraBtn" title="Camera"></Button>
+				<Button id="galleryBtn" title="Gallery"></Button>
+			</View>
+			<ImageView id="img"></ImageView>
+		</View>
 		<Button id="saveButton" title="Save" onClick="saveNode"></Button>
     </View>
 </Alloy>

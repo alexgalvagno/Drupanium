@@ -13,6 +13,12 @@ function Controller() {
                         format: "full_html"
                     } ]
                 },
+                field_image: {
+                    und: [ {
+                        filename: data_to_send.file,
+                        filemime: "image/png"
+                    } ]
+                },
                 uid: Alloy.Globals.userData.userUid
             }
         };
@@ -95,12 +101,49 @@ function Controller() {
         right: "10dp",
         height: "100dp",
         bottom: "10dp",
-        borderWidth: 2,
-        borderColor: "#bbb",
-        borderRadius: 5,
         id: "nodeBodyTa"
     });
     $.__views.view2.add($.__views.nodeBodyTa);
+    $.__views.imageView = Ti.UI.createView({
+        layout: "horizontal",
+        height: "130dp",
+        top: "10dp",
+        id: "imageView"
+    });
+    $.__views.view2.add($.__views.imageView);
+    $.__views.immagineBtnView = Ti.UI.createView({
+        top: "10dp",
+        layout: "vertical",
+        height: "120dp",
+        width: "50%",
+        id: "immagineBtnView"
+    });
+    $.__views.imageView.add($.__views.immagineBtnView);
+    $.__views.cameraBtn = Ti.UI.createButton({
+        left: "10dp",
+        title: "Camera",
+        width: "70%",
+        id: "cameraBtn"
+    });
+    $.__views.immagineBtnView.add($.__views.cameraBtn);
+    $.__views.galleryBtn = Ti.UI.createButton({
+        top: "5dp",
+        left: "10dp",
+        title: "Gallery",
+        width: "70%",
+        id: "galleryBtn"
+    });
+    $.__views.immagineBtnView.add($.__views.galleryBtn);
+    $.__views.img = Ti.UI.createImageView({
+        image: "/images/wait.png",
+        width: "126dp",
+        height: "126dp",
+        borderWidth: 2,
+        borderColor: "#bbb",
+        borderRadius: 5,
+        id: "img"
+    });
+    $.__views.imageView.add($.__views.img);
     $.__views.saveButton = Ti.UI.createButton({
         id: "saveButton",
         title: "Save"
@@ -110,6 +153,53 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.include("/lib/config.js");
+    var data_to_send = {};
+    $.cameraBtn.addEventListener("click", function() {
+        Titanium.Media.showCamera({
+            success: function(event) {
+                event.cropRect;
+                var image = event.media;
+                var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, "camera_photo.png");
+                f.write(image);
+                imageView.image = f.nativePath;
+                data_to_send.file = f.read();
+                data_to_send.name = "camera_photo.png";
+                Ti.API.debug("Our type was: " + event.mediaType);
+                event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO ? img.image = event.media : alert("got the wrong type back =" + event.mediaType);
+            },
+            cancel: function() {},
+            error: function(error) {
+                var a = Titanium.UI.createAlertDialog({
+                    title: "Camera"
+                });
+                error.code == Titanium.Media.NO_CAMERA ? a.setMessage("Please run this test on device") : a.setMessage("Unexpected error: " + error.code);
+                a.show();
+            },
+            saveToPhotoGallery: true,
+            allowEditing: true,
+            mediaTypes: [ Ti.Media.MEDIA_TYPE_VIDEO, Ti.Media.MEDIA_TYPE_PHOTO ]
+        });
+    });
+    $.galleryBtn.addEventListener("click", function() {
+        Ti.Media.openPhotoGallery({
+            success: function(event) {
+                var image = event.media;
+                img.image = image;
+                var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, "camera_photo.png");
+                f.write(image);
+                imageView.image = f.nativePath;
+                data_to_send.file = f.read();
+                data_to_send.name = "camera_photo.png";
+            },
+            cancel: function() {
+                alert("canceled");
+            },
+            error: function(error) {
+                alert(error);
+            },
+            mediaTypes: [ Ti.Media.MEDIA_TYPE_PHOTO ]
+        });
+    });
     __defers["$.__views.saveButton!click!saveNode"] && $.__views.saveButton.addEventListener("click", saveNode);
     _.extend($, exports);
 }

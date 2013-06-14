@@ -5,7 +5,7 @@ function Controller() {
         var xhr = Ti.Network.createHTTPClient({
             timeout: 6e4
         });
-        style = Ti.UI.iPhone.ActivityIndicatorStyle.BIG;
+        style = Ti.UI.ActivityIndicatorStyle.BIG_DARK;
         $.activityIndicator.style = style;
         $.activityIndicator.show();
         xhr.onload = function() {

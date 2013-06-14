@@ -18,7 +18,8 @@ function Controller() {
     $.__views.title = Ti.UI.createLabel({
         height: Titanium.UI.SIZE,
         font: {
-            fontSize: "14dp"
+            fontSize: "16dp",
+            fontWeight: "bold"
         },
         color: "#000000",
         left: "10dp",
@@ -39,7 +40,7 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.row.id = args.id;
-    "android" === Ti.Platform.osname && ($.row.title = args.title);
+    $.row.title = args.title;
     null != args.img && ($.image.image = args.img);
     $.title.text = args.title;
     _.extend($, exports);

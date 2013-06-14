@@ -1,36 +1,73 @@
 Ti.include("/lib/config.js");
 
-/*var imageButton = Ti.UI.createButton({
-title: "Image",
-height: 20,
-width: 100,
-font: {
-fontSize: 13,
-},
-top: 290
+var data_to_send = {};
+
+$.cameraBtn.addEventListener('click', function(){
+	Titanium.Media.showCamera({	
+		success:function(event)
+		{
+			var cropRect = event.cropRect;
+			var image = event.media;
+			
+			var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'camera_photo.png');
+			f.write(image);
+			imageView.image = f.nativePath;
+			data_to_send.file = f.read();
+			data_to_send.name = 'camera_photo.png';
+			
+			Ti.API.debug('Our type was: '+ event.mediaType);
+			if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO)
+			{						
+				img.image =	event.media;
+			}else{
+				alert("got the wrong type back ="+ event.mediaType);
+			}
+		},
+		cancel:function()
+		{
+		},
+		error:function(error)
+		{
+			// create alert
+			var a = Titanium.UI.createAlertDialog({title:'Camera'});
+			
+			// set message
+			if (error.code == Titanium.Media.NO_CAMERA)
+			{
+				a.setMessage('Please run this test on device');
+			}else{
+				a.setMessage('Unexpected error: ' + error.code);
+			}
+			
+			// show alert
+			a.show();
+		},
+		saveToPhotoGallery:true,
+		allowEditing:true,
+		mediaTypes:[Ti.Media.MEDIA_TYPE_VIDEO,Ti.Media.MEDIA_TYPE_PHOTO]
+	});
 });
 
-view.add(imageButton);
-var data_to_send = {};
-imageButton.addEventListener('click', function() {
-Ti.Media.showCamera({
-showControls:true,
-mediaTypes:Ti.Media.MEDIA_TYPE_PHOTO,
-autohide:true,
-allowEditing:true,
-success:function(event) {
-var image = event.media;
-var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'camera_photo.png');
-f.write(image);
-imageView.image = f.nativePath;
-data_to_send.file = f.read();
-data_to_send.name = 'camera_photo.png';
-},
-cancel:function() { },
-error:function(error) {}
+$.galleryBtn.addEventListener('click', function(){
+	Ti.Media.openPhotoGallery({
+        success:function(event) {
+            var image = event.media;
+            img.image = image;
+            
+            var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'camera_photo.png');
+			f.write(image);
+			imageView.image = f.nativePath;
+			data_to_send.file = f.read();
+			data_to_send.name = 'camera_photo.png';
+        },
+        cancel:function() { alert('canceled');},
+        error:function(error) {
+            alert(error);
+        },
+		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]		 
+    });
 });
-});
-*/
+
 
 function saveNode() {
 	var xhr = Ti.Network.createHTTPClient({timeout: 60000});
@@ -45,15 +82,12 @@ function saveNode() {
 					format: 'full_html'
 				}]
 			},
-			/*
 			field_image: {
-			und: [
-			{ filename: data_to_send.file,
-			filemime: 'image/png'
-			}
-			]
+				und: [{
+					filename: data_to_send.file,
+					filemime: 'image/png'
+				}]
 			},
-			*/
 			uid: Alloy.Globals.userData.userUid,
 		}
 	};
