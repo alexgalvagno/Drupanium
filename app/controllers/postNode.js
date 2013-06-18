@@ -11,14 +11,14 @@ $.cameraBtn.addEventListener('click', function(){
 			
 			var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'camera_photo.png');
 			f.write(image);
-			imageView.image = f.nativePath;
+			
 			data_to_send.file = f.read();
 			data_to_send.name = 'camera_photo.png';
 			
 			Ti.API.debug('Our type was: '+ event.mediaType);
 			if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO)
 			{						
-				img.image =	event.media;
+				$.img.image =	event.media;
 			}else{
 				alert("got the wrong type back ="+ event.mediaType);
 			}
@@ -52,11 +52,11 @@ $.galleryBtn.addEventListener('click', function(){
 	Ti.Media.openPhotoGallery({
         success:function(event) {
             var image = event.media;
-            img.image = image;
+            $.img.image = image;
             
             var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'camera_photo.png');
 			f.write(image);
-			imageView.image = f.nativePath;
+			
 			data_to_send.file = f.read();
 			data_to_send.name = 'camera_photo.png';
         },
